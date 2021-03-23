@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
       email,
       password,
       role,
-      company: company || ""
+      company: company || "",
     });
     // Create salt & hash
     return bcrypt.genSalt(10, (err, salt) => {
@@ -53,7 +53,7 @@ router.post("/", (req, res) => {
             if (e) throw e;
 
             return res.json({
-              msg: "register successfull"
+              msg: "register successfull",
             });
           });
         });
@@ -88,7 +88,7 @@ router.patch("/:id/logs", auth, (req, res) => {
     name: log.name,
     explanation: log.explanation,
     role: log.role,
-    company: log.company
+    company: log.company,
   })
     .save()
     .then((savedLog) => {
@@ -97,8 +97,8 @@ router.patch("/:id/logs", auth, (req, res) => {
         { _id: req.params.id },
         {
           $push: {
-            logs: savedLog
-          }
+            logs: savedLog,
+          },
         }
       );
       if (isOauth)
@@ -106,8 +106,8 @@ router.patch("/:id/logs", auth, (req, res) => {
           { uniqueId: req.params.id },
           {
             $push: {
-              logs: savedLog
-            }
+              logs: savedLog,
+            },
           }
         );
       else
@@ -130,7 +130,7 @@ router.patch("/:id", auth, (req, res) => {
 
   if (!email || !name || !role)
     return res.status(400).json({
-      msg: "request body should contain the updated user information "
+      msg: "request body should contain the updated user information ",
     });
 
   return userModels.User.findByIdAndUpdate(
@@ -139,8 +139,8 @@ router.patch("/:id", auth, (req, res) => {
       $set: {
         name,
         email,
-        role
-      }
+        role,
+      },
     }
   )
     .then((user) => {
@@ -171,8 +171,8 @@ router.delete("/:userid/logs/:logid", auth, (req, res) => {
     { _id: req.params.userid },
     {
       $pull: {
-        logs: { _id: req.params.logid }
-      }
+        logs: { _id: req.params.logid },
+      },
     }
   )
     .then(() => {
@@ -205,7 +205,7 @@ router.post("/create-oauth-user", (req, res) => {
 
     const newOauthUser = new userModels.OauthUser({
       uniqueId,
-      ...oauthUser
+      ...oauthUser,
     });
 
     return newOauthUser

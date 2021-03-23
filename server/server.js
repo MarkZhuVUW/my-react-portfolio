@@ -5,11 +5,8 @@ const config = require("config");
 
 const app = express();
 
-// swagger UI documentation
-const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 const swaggerDocs = require("./routes/api/swagger.json");
-
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 // Bodyparser Middleware
 app.use(express.json());
@@ -21,7 +18,6 @@ const db = config.get("mongoURI");
 mongoose
   .connect(db, {
     useNewUrlParser: true,
-
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false

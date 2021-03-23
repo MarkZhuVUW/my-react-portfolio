@@ -6,9 +6,11 @@ import { getGithubUser, loadUser } from "actions/authActions";
 import SignInSide from "components/auth/SignInSide";
 import SignUp from "components/auth/SignUp";
 import Frame from "components/frame/Frame";
-
+import MyButton from "components/shared/MyButton";
 import ParticlesCustomized from "components/shared/ParticlesCustomized";
 import ErrorPage from "error-pages/ErrorPage";
+import { gsap } from "gsap";
+import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import ClearCache from "react-clear-cache";
@@ -16,9 +18,6 @@ import { connect } from "react-redux";
 import MediaQuery from "react-responsive";
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.scss";
-import { gsap } from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-import MyButton from "components/shared/MyButton";
 
 const darkOrLightTheme = createMuiTheme(
   {

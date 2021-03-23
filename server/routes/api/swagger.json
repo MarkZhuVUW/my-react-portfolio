@@ -10,12 +10,6 @@
     },
     "contact": { "email": "zdy120939259@outlook.com" }
   },
-  "servers": [
-    {
-      "url": "/",
-      "description": "localhost:5001"
-    }
-  ],
   "tags": [
     {
       "name": "auth",
@@ -248,23 +242,13 @@
       "patch": {
         "summary": "update user profile (not implemented)",
         "tags": ["users"],
-        "requestBody": {
-          "description": "a user object containing things needed to be updated for the user",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/definitions/UserReq"
-              }
-            }
-          }
-        },
         "parameters": [
           {
             "in": "path",
             "name": "id",
             "required": true,
-            "description": "update user profile with the id of user"
+            "description": "update user profile with the id of user",
+            "type": "string"
           },
           {
             "name": "x-auth-token",
@@ -292,9 +276,7 @@
             "name": "id",
             "required": true,
             "description": "Delete user with id",
-            "schema": {
-              "$ref": "#/definitions/id"
-            }
+            "type": "string"
           },
           {
             "name": "x-auth-token",

@@ -6,22 +6,27 @@
     "jest": true
   },
 
-  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 5,
     "ecmaFeatures": {
       "jsx": true
     },
 
     "sourceType": "module"
   },
-  "plugins": ["react", "unused-imports"],
-
+  "plugins": ["react", "unused-imports", "@typescript-eslint"],
   "rules": {
     "semi": "error",
     "react/jsx-props-no-spreading": "off",
@@ -42,6 +47,7 @@
         "moduleDirectory": ["node_modules", "src/"]
       }
     },
+
     "react": {
       "pragma": "React", // Pragma to use, default to "React"
       "version": "16.12" // React version. "detect" automatically picks the version you have installed.

@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
             // if (err) throw err;
             res.json({
               token,
-              user
+              user,
             });
           }
         );
@@ -84,7 +84,7 @@ router.get("/", (req, res) => {
           if (err) throw err;
           res.json({
             token,
-            user
+            user,
           });
         }
       );
@@ -102,7 +102,7 @@ router.post("/github-access-token", (req, res) => {
   if (!code) {
     return res.send({
       success: false,
-      msg: "error no code"
+      msg: "error no code",
     });
   }
 
@@ -113,7 +113,7 @@ router.post("/github-access-token", (req, res) => {
   const body = JSON.stringify({
     client_id: clientId,
     client_secret: clientSecret,
-    code
+    code,
   });
 
   // get access token.
@@ -121,8 +121,8 @@ router.post("/github-access-token", (req, res) => {
     .post(`https://github.com/login/oauth/access_token`, body, {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
-      }
+        Accept: "application/json",
+      },
     })
     .then((accessTokenRes) => {
       return res.json(accessTokenRes.data);
@@ -131,7 +131,7 @@ router.post("/github-access-token", (req, res) => {
       // console.log(err);
       return res.status(401).json({
         success: false,
-        msg: err.body
+        msg: err.body,
       });
     });
 });
@@ -143,8 +143,8 @@ router.get("/github-user", (req, res) => {
   const githubUserConfig = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${req.headers.access_token}`
-    }
+      Authorization: `Bearer ${req.headers.access_token}`,
+    },
   };
 
   // get github user.
@@ -163,7 +163,7 @@ router.get("/github-user", (req, res) => {
       // console.log(err);
       return res.status(401).json({
         success: false,
-        msg: err.body
+        msg: err.body,
       });
     });
 });
