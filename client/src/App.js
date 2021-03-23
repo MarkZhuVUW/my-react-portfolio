@@ -108,19 +108,13 @@ class App extends Component {
                           <Route path="/frame">
                             <Frame themeCallback={themeCallback} />
                           </Route>
-                          <Route
-                            render={() => {
-                              return <ErrorPage code={404} />;
-                            }}
-                          />
+                          <Route render={() => <ErrorPage code={404} />} />
                         </Switch>
 
                         <Route
                           exact
                           path="/"
-                          render={() => {
-                            return <Redirect to="/frame" />;
-                          }}
+                          render={() => <Redirect to="/frame" />}
                         />
                       </div>
                     ) : (
@@ -145,22 +139,14 @@ class App extends Component {
                           <Route exact path="/signup" component={SignUp} />
                           <Route
                             path="/frame"
-                            render={() => {
-                              return <ErrorPage code={401} />;
-                            }}
+                            render={() => <ErrorPage code={401} />}
                           />
-                          <Route
-                            render={() => {
-                              return <ErrorPage code={404} />;
-                            }}
-                          />
+                          <Route render={() => <ErrorPage code={404} />} />
                         </Switch>
                         <Route
                           exact
                           path="/"
-                          render={() => {
-                            return <Redirect to="/signin" />;
-                          }}
+                          render={() => <Redirect to="/signin" />}
                         />
                       </>
                     )}

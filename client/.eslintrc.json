@@ -26,7 +26,7 @@
 
     "sourceType": "module"
   },
-  "plugins": ["react", "unused-imports", "@typescript-eslint"],
+  "plugins": ["react", "unused-imports"],
   "rules": {
     "semi": "error",
     "react/jsx-props-no-spreading": "off",
@@ -39,7 +39,10 @@
     "react/destructuring-assignment": ["off"],
     "no-multiple-empty-lines": ["error", { "max": 2 }],
     "no-console": ["off"],
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    // used to solve a current bug. Refer to:  https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined/64024916#64024916
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
   },
   "settings": {
     "import/resolver": {
